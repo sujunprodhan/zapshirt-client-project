@@ -1,5 +1,6 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
+import Logo from '../assets/banner/logo.png';
 
 const Navber = () => {
   const links = (
@@ -57,13 +58,21 @@ const Navber = () => {
               {links}
             </ul>
           </div>
-          <a className="text-secondary text-xl">ZapShert</a>
+          <div className="flex items-center">
+            <img src={Logo} alt="" />
+            <h1 className="text-4xl text-primary font-bold">zapShift</h1>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{links}</ul>
+          <ul className="menu menu-horizontal px-1 text-primary">{links}</ul>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+        <div className="navbar-end flex gap-3 font-semibold">
+          <Link to="/login" className="bg-secondary text-primary px-6 py-2 rounded-full">
+            Login
+          </Link>
+          <Link to="/register" className="bg-primary text-white px-6 py-2 rounded-full">
+            Register
+          </Link>
         </div>
       </div>
     </div>

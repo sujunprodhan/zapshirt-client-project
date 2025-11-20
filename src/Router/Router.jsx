@@ -7,6 +7,8 @@ import Coverage from '../Pages/Coverage/coverage';
 import Blog from '../Pages/Blog/Blog';
 import Contact from '../Pages/Contact/Contact';
 import Priching from '../Pages/Priching/Priching';
+import Login from '../Layoute/Login';
+import Register from '../Layoute/Register';
 
 export const router = createBrowserRouter([
   {
@@ -27,7 +29,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/coverage',
-        element:<Coverage/>
+        element:<Coverage/>,
+        loader: ()=> fetch('/service.json')
+        .then(res => res.json())
       },
       {
         path:'/blog',
@@ -41,6 +45,14 @@ export const router = createBrowserRouter([
         path:'/priching',
         element:<Priching/>
       },
+      {
+        path:'/login',
+        element:<Login/>
+      },
+      {
+        path:'/register',
+        element:<Register/>
+      }
     ],
   },
 ]);
