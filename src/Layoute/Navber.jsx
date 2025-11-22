@@ -14,18 +14,7 @@ const Navber = () => {
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
-      <li>
-        <NavLink to="/about">About Us</NavLink>
-      </li>
-      <li>
-        <NavLink to="/priching">Priching</NavLink>
-      </li>
-      <li>
-        <NavLink to="/blog">Blog</NavLink>
-      </li>
-      <li>
-        <NavLink to="/contact">Contact Us</NavLink>
-      </li>
+     
     </>
   );
 

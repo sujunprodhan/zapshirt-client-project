@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import { useLoaderData } from 'react-router';
@@ -7,10 +7,10 @@ import { CiSearch } from 'react-icons/ci';
 const Coverage = () => {
   const position = [23.685, 90.3563];
   const servicePoint = useLoaderData();
+  const mapRef = useRef(null)
 
   const handleSearch = (e) => {
     e.preventDefault();
-
     const location = e.target.location.value;
     const district = servicePoint.find((c) =>
       c.district.toLowerCase().includes(location.toLowerCase())
@@ -18,7 +18,7 @@ const Coverage = () => {
 
     if (district) {
       const coord = [district.latitude, district.longitude];
-      console.log(district, coord);
+      mapRef.current.flyTo(coord, 13)
     }
   };
 
@@ -40,8 +40,6 @@ const Coverage = () => {
                 placeholder="Search district..."
               />
             </div>
-
-            {/* Button (Directly Connected — No Gap) */}
             <button
               type="submit"
               className="h-11 px-6 bg-primary text-white border border-primary rounded-r-full hover:bg-primary/80"
@@ -50,10 +48,16 @@ const Coverage = () => {
             </button>
           </div>
         </form>
-        <h1 className='text-primary font-bold text-2xl'>We deliver almost all over Bangladesh</h1>
+        <h1 className="text-primary font-bold text-2xl">We deliver almost all over Bangladesh</h1>
         {/* MAP AREA */}
         <div>
-          <MapContainer center={position} zoom={8} scrollWheelZoom={false} className="h-[800px]">
+          <MapContainer
+            center={position}
+            zoom={8}
+            scrollWheelZoom={false}
+            ref={mapRef}
+            className="h-[800px]"
+          >
             <TileLayer
               attribution="&copy; OpenStreetMap contributors"
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -64,7 +68,7 @@ const Coverage = () => {
                 <Popup>
                   <strong className="text-xl font-bold text-primary">{center.district}</strong>
                   <br />
-                  Service Area: {center.covered_area.join(', ')}
+                  Service Area: {center.covered_area.join(' , ')}
                 </Popup>
               </Marker>
             ))}

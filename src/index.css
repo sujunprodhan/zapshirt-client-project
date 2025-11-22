@@ -4,17 +4,15 @@
 @plugin "daisyui" {
   themes: light --default, dark --prefersdark, cupcake;
 }
-@plugin "daisyui/theme" {
+/* @plugin "daisyui/theme" {
   name: 'light';
-  default: true;
   --color-primary: #03373D;
   --color-secondary: #C7F464;
   --color-base-100: #606060;
   --color-base-200: #CAEB66;
   --color-base-300: #CAEB66;
   --color-base-400: #DADADA;
-}
-
+} */
 
 * {
   font-family: 'Urbanist', sans-serif;
