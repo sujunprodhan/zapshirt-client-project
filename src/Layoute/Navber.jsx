@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { use } from 'react';
 import { Link, NavLink } from 'react-router';
 import Logo from '../assets/banner/logo.png';
+import { toast } from 'react-toastify';
+import useAuth from '../Hooks/useAuth';
 
 const Navber = () => {
+  const { user, logOut } = useAuth()
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        toast.success('Logout Successfully')
+      })
+      .catch((e) => {
+        toast.error(e.message);
+      });
+  };
+
   const links = (
     <>
       <li>
@@ -14,7 +28,12 @@ const Navber = () => {
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
-     
+      <li>
+        <NavLink to="/rider">Be A Rider</NavLink>
+      </li>
+      <li>
+        <NavLink to="/sendapercel">Send A Percel</NavLink>
+      </li>
     </>
   );
 
@@ -42,26 +61,45 @@ const Navber = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content text-primary rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="text_primary menu menu-sm dropdown-content text-primary rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
           </div>
           <div className="flex items-center">
             <img src={Logo} alt="" />
-            <h1 className="text-4xl text-primary font-bold">zapShift</h1>
+            <h1 className="text_primary text-4xl text-primary font-bold">zapShift</h1>
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 text-primary">{links}</ul>
+          <ul className="text_primary menu menu-horizontal px-1 text-primary">{links}</ul>
         </div>
         <div className="navbar-end flex gap-3 font-semibold">
-          <Link to="/login" className="bg-secondary text-primary px-6 py-2 rounded-full">
-            Login
-          </Link>
-          <Link to="/register" className="bg-primary text-white px-6 py-2 rounded-full">
-            Register
-          </Link>
+          {user ? (
+            <div className="flex gap-3">
+              <Link
+                onClick={handleLogOut}
+                className="text_primary border border-[#C7F464] text-primary px-6 py-2 rounded-full"
+              >
+                Log Out
+              </Link>
+            </div>
+          ) : (
+            <div className="text_color flex gap-3">
+              <Link
+                to="/login"
+                className="text_primary border border-[#CAEB66] bg-socondary px-6 py-2 rounded-full"
+              >
+                Login
+              </Link>
+              <Link
+                to="/rider"
+                className=" bg-[#CAEB66] text_primary text-primary px-6 py-2 rounded-full"
+              >
+                Be A Rider
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

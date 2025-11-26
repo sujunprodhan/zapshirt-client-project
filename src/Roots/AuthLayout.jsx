@@ -6,7 +6,7 @@ import AuthImg from '../assets/banner/authImage.png';
 const AuthLayout = () => {
   return (
     <div>
-      <div className="flex items-center w-11/12 mx-auto">
+      <div className="flex items-center  w-11/12 mx-auto">
         <img src={logo} alt="" />
         <h1 className="text-3xl font-bold text-primary">zafShift</h1>
       </div>

@@ -3,11 +3,11 @@ import logo from '../assets/banner/logo.png'
 
 const Footer = () => {
   return (
-    <footer className="footer footer-horizontal footer-center bg-primary  p-10 text-white">
+    <footer className="footer mt-20 footer-horizontal footer-center bg-[#03373D]  p-10 text-white">
       <aside>
-        <div className='flex items-center font-bold'>
+        <div className="flex items-center font-bold">
           <img src={logo} alt="" />
-          <h1 className='text-4xl'>zapShift</h1>
+          <h1 className="text-4xl">zapShift</h1>
         </div>
         <p className="font-bold">
           ACME Industries Ltd.

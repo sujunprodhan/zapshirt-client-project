@@ -9,7 +9,7 @@ const ReviewCard = ({ reviews }) => {
         <div className="text-teal-300 text-3xl leading-none select-none">
           <img src={qutetion} alt="" className='mx-auto' />
         </div>
-        <p className="text-sm text-primary leading-6">{review}</p>
+        <p className="text-sm text_primary leading-6">{review}</p>
       </div>
       <div className="mt-4">
         <div className="border-t border-dashed border-gray-300" />
@@ -21,7 +21,7 @@ const ReviewCard = ({ reviews }) => {
 
         <div>
           <div className="text-sm font-semibold text-gray-800">{userName}</div>
-          <div className="text-xs text-primary font-semibold">Verified Customer</div>
+          <div className="text-xs text_primary font-semibold">Verified Customer</div>
         </div>
       </div>
     </div>

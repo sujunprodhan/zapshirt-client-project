@@ -2,7 +2,7 @@
 
 @import 'tailwindcss';
 @plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
+  themes: light --default, dark --prefersdark;
 }
 /* @plugin "daisyui/theme" {
   name: 'light';
@@ -14,7 +14,22 @@
   --color-base-400: #DADADA;
 } */
 
+.text_primary {
+  color: #03373d;
+}
+.text_secondary {
+  color: #c7f464;
+}
+.text_base{
+  color:#DADADA ;
+}
+.bg_primary {
+  color: #c7f464;
+}
+.bg_secondary {
+  color: #03373d;
+}
+
 * {
   font-family: 'Urbanist', sans-serif;
 }
-

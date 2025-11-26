@@ -13,7 +13,7 @@ const BrandLogo = () => {
 
   return (
     <div>
-        <h1 className='text-center text-2xl font-bold text-primary mt-20 mb-10'>We've helped thousands of sales teams</h1>
+        <h1 className='text-center text-2xl font-bold text_primary mt-20 mb-10'>We've helped thousands of sales teams</h1>
       <div className="bg-gray-100 py-4 flex">
         <marquee behavior="" direction="">
           <div className="flex gap-10">

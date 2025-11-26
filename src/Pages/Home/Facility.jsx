@@ -10,8 +10,8 @@ const Facility = () => {
           <img src={img} alt="" />
           <div className="h-30 border-l border-gray-300 ml-20 border-dashed "></div>
           <div className="ml-15 space-y-2">
-            <h3 className="text-primary font-bold text-xl">Live Parcel Tracking</h3>
-            <p className="text-base-100">
+            <h3 className="text_primary font-bold text-xl">Live Parcel Tracking</h3>
+            <p className="text-[#adadad]">
               Stay updated in real-time with our live parcel tracking feature. From pick-up to
               delivery, monitor your shipment's journey and get instant status updates for complete
               peace of mind.
@@ -22,8 +22,8 @@ const Facility = () => {
           <img src={img2} alt="" />
           <div className="h-30 border-l border-gray-300 ml-20 border-dashed "></div>
           <div className="ml-15 space-y-2">
-            <h3 className="text-primary text-xl font-bold">100% Safe Delivery</h3>
-            <p className="text-base-100">
+            <h3 className="text_primary text-xl font-bold">100% Safe Delivery</h3>
+            <p className="text-[#adadad]">
               We ensure your parcels are handled with the utmost care and delivered securely to
               their destination. Our reliable process guarantees safe and damage-free delivery every
               time.
@@ -34,8 +34,8 @@ const Facility = () => {
           <img src={img2} alt="" />
           <div className="h-30 border-l  border-gray-300 ml-20 border-dashed "></div>
           <div className="ml-15 space-y-2">
-            <h3 className="text-primary font-bold text-xl">24/7 Call Center Supportg</h3>
-            <p className="text-base-100">
+            <h3 className="text_primary font-bold text-xl">24/7 Call Center Supportg</h3>
+            <p className="text-[#adadad]">
               Our dedicated support team is available around the clock to assist you with any
               questions, updates, or delivery concerns—anytime you need us.
             </p>

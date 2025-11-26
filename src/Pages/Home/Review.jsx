@@ -14,8 +14,8 @@ const Review = ({ reviews }) => {
       <div className="w-11/12 mx-auto mb-20">
         <div className="text-center mb-20">
           <img src={customerTop} alt="" className="mx-auto mb-5" />
-          <h1 className=" text-primary text-2xl font-bold">What our customers are sayings</h1>
-          <p className="text-base-100 my-2">
+          <h1 className=" text_primary text-2xl font-bold">What our customers are sayings</h1>
+          <p className="text-[#adadad] my-2">
             Enhance posture, mobility, and well-being effortlessly with Posture Pro. Achieve proper
             alignment, reduce pain, and strengthen your body with ease!
           </p>

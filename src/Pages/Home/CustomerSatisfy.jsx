@@ -6,7 +6,7 @@ const CustomerSatisfy = () => {
   return (
     <div>
       <div
-        className="w-11/12 mx-auto border h-[50vh] rounded-md mb-20 bg-cover bg-center bg-no-repeat bg-primary"
+        className="w-11/12 mx-auto border h-[50vh] rounded-md mb-20 bg-cover bg-center bg-no-repeat bg-[#03373D]"
         style={{
           backgroundImage: `url(${BackgroundImg1}), url(${BackgroundImg2})`,
           backgroundPosition: 'top, right',
@@ -24,9 +24,11 @@ const CustomerSatisfy = () => {
               your product. Pathao courier delivers your parcels in every corner of Bangladesh right
               on time.
             </p>
-            <div className='flex gap-4'>
-              <button className="bg-secondary px-5 py-2 rounded-full font-semibold">Become a Merchant</button>
-              <button className="border-1 border-secondary px-4 py-2 rounded-full text-secondary font-semibold">
+            <div className="flex gap-4">
+              <button className="bg-[#CAEB66] text_primary px-5 py-2 rounded-full font-semibold">
+                Become a Merchant
+              </button>
+              <button className="border border-[#CAEB66] px-4 py-2 rounded-full text_secondary font-semibold">
                 Earn with ZapShift Courier
               </button>
             </div>
