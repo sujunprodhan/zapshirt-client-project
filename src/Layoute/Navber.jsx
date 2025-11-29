@@ -34,6 +34,13 @@ const Navber = () => {
       <li>
         <NavLink to="/sendapercel">Send A Percel</NavLink>
       </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/dashboardlayout/myparcels">My Percel</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
 
@@ -76,7 +83,8 @@ const Navber = () => {
         </div>
         <div className="navbar-end flex gap-3 font-semibold">
           {user ? (
-            <div className="flex gap-3">
+            <div className="flex gap-3 items-center">
+              <p className='text_primary'>{user?.displayName}</p>
               <Link
                 onClick={handleLogOut}
                 className="text_primary border border-[#C7F464] text-primary px-6 py-2 rounded-full"

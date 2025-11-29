@@ -9,6 +9,11 @@ import Register from '../Layoute/Register';
 import Rider from '../Pages/Rider/Rider';
 import PrivateRoute from './PrivateRoute';
 import SendAParcel from '../Pages/SendAparcel/SendAParcel';
+import DashBoardLayout from '../Pages/DashBoardLayout/DashBoardLayout';
+import MyParcels from '../Pages/Coverage/DashBoard/MyParcels';
+
+
+
 
 export const router = createBrowserRouter([
   {
@@ -29,11 +34,11 @@ export const router = createBrowserRouter([
       },
       {
         path: '/sendapercel',
-        element: (
+        element: 
           <PrivateRoute>
             <SendAParcel />
-          </PrivateRoute>
-        ),
+          </PrivateRoute>,
+       loader: () =>fetch('/service.json').then(res=>res.json())
       },
       {
         path: '/services',
@@ -60,4 +65,17 @@ export const router = createBrowserRouter([
       },
     ],
   },
+  {
+    path:'/dashboardlayout',
+    element:<PrivateRoute>
+      <DashBoardLayout></DashBoardLayout>
+    </PrivateRoute>,
+    children:[
+      {
+        path:'myparcels',
+        element:<MyParcels></MyParcels>
+      }
+    ]
+    
+  }
 ]);
