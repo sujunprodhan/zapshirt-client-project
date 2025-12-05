@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm, useWatch } from 'react-hook-form';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 import useAuth from '../../Hooks/useAuth';
@@ -15,6 +15,7 @@ const SendAParcel = () => {
   } = useForm({ defaultValues: { parcelType: 'document' } });
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate = useNavigate()
   const serviceCenters = useLoaderData();
   const regionsDuplicat = serviceCenters.map((c) => c.region);
   const regions = [...new Set(regionsDuplicat)];
@@ -29,7 +30,6 @@ const SendAParcel = () => {
   };
 
   const handelSendPercel = (data) => {
-    console.log('form submitted', data);
     const isDocument = data.parcelType === 'document';
     const isSameDistrict = data.senderDistrict === data.receiverDistrict;
     const parcelWegit = parseFloat(data.pacelWeight);
@@ -61,13 +61,17 @@ const SendAParcel = () => {
       if (result.isConfirmed) {
         // Save To Parcel
         axiosSecure.post('/parcels', data).then((res) => {
-          console.log('after saving parcel', res.data);
-        });
-
-        Swal.fire({
-          title: 'Confirm!',
-          text: 'Your parcel have done.',
-          icon: 'success',
+          if (res.data.insertedId) {
+            navigate('/dashboardlayout/myparcels');
+            Swal.fire({
+              position: 'top-end',
+              icon: 'success',
+              title: 'Confirm!',
+              text: 'parcel have created please pay.',
+              showConfirmButton: false,
+              timer: 2500,
+            });
+          }
         });
       }
     });

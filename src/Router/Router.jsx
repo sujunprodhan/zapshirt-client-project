@@ -11,9 +11,10 @@ import PrivateRoute from './PrivateRoute';
 import SendAParcel from '../Pages/SendAparcel/SendAParcel';
 import DashBoardLayout from '../Pages/DashBoardLayout/DashBoardLayout';
 import MyParcels from '../Pages/Coverage/DashBoard/MyParcels';
-
-
-
+import Payment from '../Pages/DashBoardLayout/Payment/Payment';
+import PaymentSuccess from '../Pages/DashBoardLayout/Payment/PaymentSuccess';
+import PaymentCancel from '../Pages/DashBoardLayout/Payment/PaymentCancel';
+import PaymentHistory from '../Pages/DashBoardLayout/PaymentHistory/PaymentHistory';
 
 export const router = createBrowserRouter([
   {
@@ -34,11 +35,12 @@ export const router = createBrowserRouter([
       },
       {
         path: '/sendapercel',
-        element: 
+        element: (
           <PrivateRoute>
             <SendAParcel />
-          </PrivateRoute>,
-       loader: () =>fetch('/service.json').then(res=>res.json())
+          </PrivateRoute>
+        ),
+        loader: () => fetch('/service.json').then((res) => res.json()),
       },
       {
         path: '/services',
@@ -66,16 +68,33 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path:'/dashboardlayout',
-    element:<PrivateRoute>
-      <DashBoardLayout></DashBoardLayout>
-    </PrivateRoute>,
-    children:[
+    path: '/dashboardlayout',
+    element: (
+      <PrivateRoute>
+        <DashBoardLayout></DashBoardLayout>
+      </PrivateRoute>
+    ),
+    children: [
       {
-        path:'myparcels',
-        element:<MyParcels></MyParcels>
+        path: 'myparcels',
+        element: <MyParcels></MyParcels>,
+      },
+      {
+        path: 'payment/:parcelId',
+        element: <Payment></Payment>,
+      },
+      {
+        path:'payment-success',
+        element:<PaymentSuccess/>
+      },
+      {
+        path:'paymenthistory',
+        element:<PaymentHistory/>
+      },
+      {
+        path:'payment-cancel',
+        element:<PaymentCancel/>
       }
-    ]
-    
-  }
+    ],
+  },
 ]);

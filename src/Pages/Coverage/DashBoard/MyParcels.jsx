@@ -5,6 +5,7 @@ import { FaEdit } from 'react-icons/fa';
 import { FaMagnifyingGlass } from 'react-icons/fa6';
 import { MdDelete } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router';
 
 const MyParcels = () => {
   const { user } = useAuth();
@@ -18,7 +19,6 @@ const MyParcels = () => {
   });
 
   const handleParcelDelete = (id) => {
-    console.log(id);
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -30,7 +30,6 @@ const MyParcels = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axiosSecure.delete(`/parcels/${id}`).then((res) => {
-          console.log(res.data);
           if (res.data.deletedCount) {
             refetch();
             Swal.fire({
@@ -42,6 +41,17 @@ const MyParcels = () => {
         });
       }
     });
+  };
+
+  const handlePayment = async (parcel) => {
+    const paymentInfo = {
+      cost: parcel.cost,
+      parcelId: parcel._id,
+      senderEmail: parcel.senderEmail,
+      parcelName: parcel.parcelName,
+    };
+    const res = await axiosSecure.post('/create-checkout-session', paymentInfo);
+    window.location.href = res.data.url;
   };
 
   return (
@@ -57,6 +67,7 @@ const MyParcels = () => {
               <th>cost</th>
               <th>Email</th>
               <th>Payment Status</th>
+              <th>Delivery Status</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -66,9 +77,22 @@ const MyParcels = () => {
               <tr key={parcel._id}>
                 <th>{index + 1}</th>
                 <td>{parcel.parcelName}</td>
-                <td>{parcel.cost}</td>
                 <td>{parcel.senderEmail}</td>
-                <td>Payment</td>
+                <td>{parcel.cost}</td>
+                <td>
+                  {parcel.paymentStatus === 'paid' ? (
+                    <span className="text-green-500">Paid</span>
+                  ) : (
+                    <button
+                      onClick={() => handlePayment(parcel)}
+                      className="btn btn-sm btn-success"
+                    >
+                      Pay
+                    </button>
+                  )}
+                </td>
+
+                <td>{parcel.deliveryStatus}</td>
                 <button className="btn btn-square mx-2">
                   <FaEdit />
                 </button>
